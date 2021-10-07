@@ -3,30 +3,55 @@
 
 using namespace std;
 
-void printStatus(string& attacker_name, int& attacker_hp, int& attacker_dmg, string& deffender_name, int& deffender_hp, int& deffender_dmg){
-  cout<< attacker_name << " (HP: "<<attacker_hp<<" DMG: "<<attacker_dmg<<")"<<"   ---   " <<deffender_name <<  "(HP: "<<deffender_hp<<" DMG: "<<deffender_dmg<<")" << endl;
+//5. video
+
+struct Warrior {
+  string name;
+  int hp;
+  int dmg;
+
+};
+
+void printWarrior(const Warrior& warrior){
+  cout<< warrior.name << " (HP: "<< warrior.hp <<" DMG: "<< warrior.dmg <<")";
 }
 
-void attack(string& attacker_name, int& attacker_hp, int& attacker_dmg, string& deffender_name, int& deffender_hp, int& deffender_dmg){
-  printStatus(attacker_name, attacker_hp, attacker_dmg, deffender_name, deffender_hp, deffender_dmg); 
-  deffender_hp-=attacker_dmg;
-  if (deffender_hp<0) deffender_hp=0;
+void printStatus(const Warrior& w1, const Warrior& w2){
+  printWarrior(w1);
+  cout << "   ---   ";
+  printWarrior(w2);
+  cout << endl;
+}
+
+void attack(const Warrior& attacker, Warrior& deffender){
+  printStatus(attacker, deffender); 
+  deffender.hp -= attacker.dmg;
+  if (deffender.hp<=0) {
+    deffender.name += " DEAD ";
+    deffender.hp=0;
+    deffender.dmg=0;
+  }
+}
+
+bool isAlive(const Warrior& warrior){
+  return warrior.hp > 0;
 }
  
 int main(){
-  string name1 = "Harcos1";
-  int hp1 = 25;
-  int dmg1 = 8;
-  string name2 = "Harcos2";
-  int hp2 = 20;
-  int dmg2 = 10;
+  Warrior  warrior1, warrior2;
+  warrior1.name = "Harcos1";
+  warrior1.hp = 25;
+  warrior1.dmg = 8;
+  warrior2.name = "Harcos2";
+  warrior2.hp = 20;
+  warrior2.dmg = 10;
   
-  while (hp1>0 && hp2>0) {
-    attack(name1, hp1, dmg1, name2, hp2, dmg2);
-    if (hp2>0) attack(name2, hp2, dmg2, name1, hp1, dmg1);
+  while (isAlive(warrior1) && isAlive(warrior2)) {
+    attack(warrior1, warrior2);
+    if (isAlive(warrior2)) attack(warrior2, warrior1);
   }
   
-  printStatus(name1, hp1, dmg1, name2, hp2, dmg2); 
+  printStatus(warrior1, warrior2); 
  
   return 0;
 }

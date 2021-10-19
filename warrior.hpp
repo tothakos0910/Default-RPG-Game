@@ -10,7 +10,8 @@ class Warrior {
   int def;
   void die();
 public:
-  void readFromKeyboard();
+  Warrior(const std::string& name, int hp, int dmg, int def);  //init konstruktor
+  
   std::string toString() const;
   void attack(Warrior& deffender) const;
   bool isAlive() const;

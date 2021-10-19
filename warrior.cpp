@@ -1,8 +1,10 @@
 #include "warrior.hpp"
-#include <iostream>
 
-void Warrior::readFromKeyboard(){
-  std::cin >> name >> hp >> dmg >> def;
+Warrior::Warrior(const std::string& name, int hp, int dmg, int def) {
+  this->name = name;
+  this->hp = hp;
+  this->dmg = dmg;
+  this->def = def;
 }
 
 std::string Warrior::toString() const{
@@ -22,8 +24,7 @@ void Warrior::die (){
 }
 
 void Warrior::attack(Warrior& deffender) const { 
-  int actual_dmg = dmg - deffender.def;
-  if (actual_dmg > 0) {
+  if (int actual_dmg = dmg - deffender.def; actual_dmg > 0) {
     deffender.hp -= actual_dmg;
     if (!deffender.isAlive()) deffender.die();
   } 

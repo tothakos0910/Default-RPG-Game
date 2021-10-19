@@ -1,13 +1,22 @@
+#include <iostream>
+#include <string>
+
 #include "warrior.hpp"
 #include "battle.hpp"
 
-//10. video
+//11. video
+
+void readFromKeyboard(Warrior& warrior){
+  std::string name;
+  int hp, dmg, def;
+  std::cin >> name >> hp >> dmg >> def;  
+
+  //warrior.initialize(name, hp, dmg, def);
+}
  
 int main(){
 
-  Warrior  warrior1, warrior2;
-  warrior1.readFromKeyboard();
-  warrior2.readFromKeyboard();
+  //Warrior  warrior1, warrior2;
 
   fightTillDeath(warrior1, warrior2);
 

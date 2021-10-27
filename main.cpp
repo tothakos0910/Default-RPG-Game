@@ -4,19 +4,15 @@
 #include "warrior.hpp"
 #include "battle.hpp"
 
-//11. video
+//13. video
 
-void readFromKeyboard(Warrior& warrior){
-  std::string name;
-  int hp, dmg, def;
-  std::cin >> name >> hp >> dmg >> def;  
+int main(int argc, char** argv){
+  //Warrior warrior1("/home/runner/Default-RPG-Game/units/Human.txt");
+  //Warrior warrior2("/home/runner/Default-RPG-Game/units/Orc.txt");
 
-  //warrior.initialize(name, hp, dmg, def);
-}
- 
-int main(){
+  Warrior warrior1("Alliance", argv[1]);
+  Warrior warrior2("Horde", argv[2]);
 
-  //Warrior  warrior1, warrior2;
 
   fightTillDeath(warrior1, warrior2);
 

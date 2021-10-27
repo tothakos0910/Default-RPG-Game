@@ -1,2 +1,0 @@
-language = "cpp"
-run = "g++ -Wall -std=c++17 *.cpp"

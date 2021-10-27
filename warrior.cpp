@@ -1,47 +1,48 @@
 #include "warrior.hpp"
 #include <fstream>
 
-Warrior::Warrior() {
-  name = "_DEFAULT";
-  hp = 1;
-  dmg = 0;
-  def = 0;
-}
+int Warrior::alive = 0;
 
-Warrior::Warrior(const std::string& team, const std::string& name, int hp, int dmg, int def) {
-  this ->team = team;
-  this->name = name;
-  this->hp = hp;
-  this->dmg = dmg;
-  this->def = def;
-}
-
-Warrior::Warrior(const std::string& team, const std::string& filename) {
-  this ->team = team;
-  std::ifstream file(filename);
-  if (file.is_open()){
-    file >> name >> hp >> dmg >> def;
-    file.close();
-  }
-}
-
-
-std::string Warrior::getTeam() const {return team;}
-
-
-std::string Warrior::toString() const{
-  return 
-  name + ((isAlive()?"":" DEAD ")) + "(" +  team + ")"
-  + " (HP: " +  std::to_string(hp)
-  + " DMG: " +  std::to_string(dmg) 
-  + " DEF: " +  std::to_string(def) 
-  + ")";
-}
-
+//private functions
 void Warrior::die (){
       hp=0;
       dmg=0;
       def=0;
+      alive--;
+}
+
+//konstruktorok
+Warrior::Warrior(const std::string& team, const std::string& name, int hp, int dmg, int def) 
+  : team(team), name(name), hp(hp), dmg(dmg), def(def) {alive++;}
+
+
+//getterek
+std::string Warrior::getTeam() const {return team;}
+int Warrior::getAlive() {return alive;}
+
+
+//class functions
+Warrior Warrior::parseFromFile(const std::string& team, const std::string& filename) {
+  if (std::ifstream file(filename); file.is_open()){
+    std::string name;
+    int hp, dmg, def;
+    file >> name >> hp >> dmg >> def;
+
+    if (file.fail()) throw BadFileFormatException{filename};
+
+    file.close();
+    return Warrior(team, name, hp, dmg, def);
+  } else throw FileNotFoundException{filename};
+}
+
+//object functions
+std::string Warrior::statusToString() const{
+  return 
+  name + ((isAlive()?"":" DEAD ")) + "(" +  team + ")"
+  + " [HP: " +  std::to_string(hp)
+  + " DMG: " +  std::to_string(dmg) 
+  + " DEF: " +  std::to_string(def) 
+  + "]";
 }
 
 void Warrior::attack(Warrior& defender) const { 
@@ -56,3 +57,5 @@ void Warrior::attack(Warrior& defender) const {
 bool Warrior::isAlive() const {
   return hp > 0;
 }
+
+

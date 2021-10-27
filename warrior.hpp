@@ -1,29 +1,43 @@
 #ifndef WARRIOR_HPP
 #define WARRIOR_HPP
 
+#include "exeptions.hpp"
+
 #include <string>
 
 class Warrior {
-  const std::string team;
-  std::string name;
-  int hp;
-  int dmg;
-  int def;
-  void die();
-public:
-  //konstruktorok
-  Warrior();
-  Warrior(const std::string& team, const std::string& name, int hp, int dmg=0, int def=0);  
-  Warrior(const std::string& team, const std::string& filename);       
+  public:
+    //exeption structures
+    struct BadFileFormatException {
+      std::string filename;
+    };
 
-  //getter      
-  std::string getTeam() const;
+    //konstruktorok
+    Warrior(const std::string& team, const std::string& name, int hp, int dmg=0, int def=0);  
 
-  //class funcitons
-  std::string toString() const;
-  void attack(Warrior& defender) const;
-  bool isAlive() const;
+    //getter      
+    std::string getTeam() const;
+
+    //class funcitons
+    static int getAlive(); 
+    static Warrior parseFromFile(const std::string& team, const std::string& filename);
+
+    //object functions 
+    std::string statusToString() const;
+    void attack(Warrior& defender) const;
+    bool isAlive() const;
+    
+  private:
+    static int alive;
+    const std::string team;
+    const std::string name;
+    int hp;
+    int dmg;
+    int def;
+
+    void die();
 
 };
+
 
 #endif

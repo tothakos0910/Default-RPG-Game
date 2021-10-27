@@ -3,18 +3,26 @@
 
 #include "warrior.hpp"
 #include "battle.hpp"
+#include "exeptions.hpp"
 
-//13. video
+//15. video
 
 int main(int argc, char** argv){
-  //Warrior warrior1("/home/runner/Default-RPG-Game/units/Human.txt");
-  //Warrior warrior2("/home/runner/Default-RPG-Game/units/Orc.txt");
 
-  Warrior warrior1("Alliance", argv[1]);
-  Warrior warrior2("Horde", argv[2]);
-
+  try {
+  Warrior warrior1 = Warrior::parseFromFile("Alliance", argv[1]);
+  Warrior warrior2 = Warrior::parseFromFile("Horde", argv[2]);
 
   fightTillDeath(warrior1, warrior2);
+
+  std::cout << "Warriors alive: " << Warrior::getAlive() << std::endl;
+  } catch(FileNotFoundException exception) {
+    std::cout << "File: " << exception.filename << " not found." << std::endl;
+    return 1;
+  } catch(Warrior::BadFileFormatException exception) {
+    std::cout << "Bad file structure in '" << exception.filename << "'" << std::endl;
+    return 2;
+  }
 
   return 0;
 }

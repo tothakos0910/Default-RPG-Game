@@ -1,8 +1,16 @@
 #include "sword.hpp"
 
-Sword::Sword(int damage, int durability)
-: damage(damage), max_durability(durability), current_durability(durability) {};
+//konstruktorok
+Sword::Sword(int damage, int durability, double weight)
+: damage(damage), max_durability(durability), current_durability(durability), weight(weight) {};
 
+//getterek
+double Sword::getWeigth() const {return weight;}
+
+//class methods
+
+
+//object methods
 int Sword::use() {
     if (current_durability > 0)
     {

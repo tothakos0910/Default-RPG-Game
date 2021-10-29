@@ -1,9 +1,12 @@
 #include "inventory.hpp"
 
+//konstruktorok
 Inventory::Inventory() : swords(nullptr) {}
 
+//getterek
 double Inventory::getTotalWeight() const {return 0;}
 
+//class methods
 int Inventory::countItems() const {
     int count = 0;
     for (InventoryItem* tmp = swords; tmp != nullptr; tmp = tmp->next) count++;

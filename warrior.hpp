@@ -7,11 +7,6 @@
 
 class Warrior {
   public:
-    //exeption structures
-    struct BadFileFormatException {
-      std::string filename;
-    };
-
     //konstruktorok
     Warrior(const std::string& team, const std::string& name, int hp, int dmg=0, int def=0);  
 
@@ -26,7 +21,11 @@ class Warrior {
     std::string statusToString() const;
     void attack(Warrior& defender) const;
     bool isAlive() const;
-    
+ 
+    //exeption structures
+    struct BadFileFormatException {
+      std::string filename;
+    };
   private:
     static int alive;
     const std::string team;

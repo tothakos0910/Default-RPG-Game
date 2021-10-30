@@ -1,25 +1,27 @@
 #ifndef SWORD_HPP 
 #define SWORD_HPP
 
+
 class Sword{
     public:
         //konstruktorok
-        Sword(int damage, const int durability, const double weight);
+        Sword(int damage, const int durability, const double weight, const int id);
         
         //getterek
-        double getWeigth() const;
-
-        //class methods
+        double getWeight() const;
+        int getID() const;
 
         //object methods
         int use();
         void repair();
-        
+        void statusToString() const;
+
     private:
-        const int damage;
-        const int max_durability;
+        int damage;
+        int max_durability;
         int current_durability;
-        const double weight;
+        double weight;
+        int id;
 };
 
 

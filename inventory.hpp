@@ -1,8 +1,9 @@
 #ifndef INVETORY_HPP
 #define INVETORY_HPP
 
-
 #include "sword.hpp"
+#include <vector>
+
 class Inventory {
     public:
         //konstruktorok
@@ -10,21 +11,21 @@ class Inventory {
 
         //getterek
         double getTotalWeight() const;
-        Sword getItemInfo(int index) const;
+        Sword getItem(int index) const;
 
         //class methods
-        int countItems() const;
 
         //object methods
         void put(const Sword& sword);
-        Sword drop(int index);
+        void drop(int index);
+        int countItems() const;
+        void listID() const;
+
+        //exeptions structurs
+        struct WrongIndexException {};
+
     private:
-        struct InventoryItem {
-            Sword sword;
-            InventoryItem* next;
-        };
-        
-        InventoryItem* swords;
+        std::vector<Sword> swords;
 };
 
 #endif

@@ -6,9 +6,11 @@
 #include "exeptions.hpp"
 #include "inventory.hpp"
 
-//17. video 14:50
+//18. video
 
 int main(int argc, char** argv){
+
+  std::cout << "\n";
 
   try {
   Warrior warrior1 = Warrior::parseFromFile("Alliance", argv[1]);
@@ -26,12 +28,35 @@ int main(int argc, char** argv){
   }
 
   Inventory inv;
-  inv.put(Sword(10, 3));
-  inv.put(Sword(10, 3));
-  std::cout << inv.countItems()<< std::endl;
-  inv.put(Sword(10, 3));
-  std::cout << inv.countItems()<< std::endl;
+  inv.put(Sword(10, 3, 1.2, 0));
+  inv.put(Sword(11, 5, 3.4, 1));
+  inv.put(Sword(12, 2, 0.3, 2));
+  inv.put(Sword(13, 2, 1.3, 3));
+  inv.put(Sword(9, 5, 0.5, 4));
+  inv.put(Sword(7, 3, 1.2, 5));
+  inv.put(Sword(15, 8, 1.8, 6));
+  inv.put(Sword(8, 1, 1.3, 7));
 
+  std::cout << "A táskában " << inv.countItems() << "db kard van." << std::endl;
+  std::cout << "Total suly: " << inv.getTotalWeight() << std::endl;
+
+  inv.getItem(2).use();
+  inv.getItem(2).use();
+
+
+  for (int i = 0; i < inv.countItems(); i++){
+    Sword s = inv.getItem(i);
+    s.statusToString();
+    std::cout << std::endl;
+  }
+  
+  inv.drop(0);
+
+  for (int i = 0; i < inv.countItems(); i++){
+    Sword s = inv.getItem(i);
+    s.statusToString();
+    std::cout << std::endl;
+  }
 
   return 0;
 }

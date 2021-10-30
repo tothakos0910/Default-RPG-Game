@@ -12,7 +12,7 @@ int main(int argc, char** argv){
 
   Inventory inv;
   Sword s(1,1,1,1);
-  inv.put(s);
+  inv.put(new Sword(1,1,1,1));
   std::cout << &s << std::endl;
   s.use();
   inv.getItem(0).use();

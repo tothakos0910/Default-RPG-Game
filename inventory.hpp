@@ -13,12 +13,12 @@ class Inventory {
 
         //getterek
         double getTotalWeight() const;
-        std::vector<Sword>& getItem(int index) const;
+        Sword getItem(int index) const;
 
         //class methods
 
         //object methods
-        void put(const Sword& sword);
+        void put(Sword* sword);
         void drop(int index);
         int countItems() const;
         void listID() const;
@@ -30,7 +30,7 @@ class Inventory {
         };
 
     private:
-        std::vector<Sword> swords;
+        std::vector<Sword*> swords;
 };
 
 #endif

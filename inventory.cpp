@@ -15,16 +15,16 @@ double Inventory::getTotalWeight() const {
    double totalWeight = 0;
    for (int i = 0; i < swords.size(); i++)
    {
-       totalWeight += swords[i].getWeight();
+       totalWeight += (*(swords[i])).getWeight();
    }
 
    return totalWeight;
 }
 
-std::vector<Sword>& Inventory::getItem(int index) const {
+Sword Inventory::getItem(int index) const {
     if (index < 0 || index >= countItems()) throw WrongIndexException{index};
     std::cout << &swords[index] << std::endl;
-    return swords[index];
+    return *swords[index];
 }
 
 //class methods
@@ -34,14 +34,8 @@ int Inventory::countItems() const {
    return swords.size();
 }
 
-void Inventory::listID() const {
-    for (int i = 0; i < swords.size(); i++)
-    { 
-        std::cout << swords[i].getID() << std::endl;
-    }
-}
 
-void Inventory::put(const Sword& sword) {
+void Inventory::put(Sword* sword) {
     swords.push_back(sword);
 }
 

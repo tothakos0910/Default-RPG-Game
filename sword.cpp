@@ -5,6 +5,8 @@
 //konstruktorok
 Sword::Sword(int damage, int durability, double weight, int ID)
 : damage(damage), max_durability(durability), current_durability(durability), weight(weight), id(ID) {};
+
+//destruktor
 Sword::~Sword() {}
 
 //getterek

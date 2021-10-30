@@ -23,19 +23,18 @@ double Inventory::getTotalWeight() const {
 
 Sword Inventory::getItem(int index) const {
     if (index < 0 || index >= countItems()) throw WrongIndexException{index};
-    //std::cout << &swords[index] << std::endl;
-    return *(swords[index]);
+    return *swords[index];
 }
 
 //class methods
 
-//object methods
+//object method
 int Inventory::countItems() const {
    return swords.size();
 }
 
 
-void Inventory::put(Sword* sword) {
+void Inventory::addItem(Sword *sword) {
     swords.push_back(sword);
 }
 

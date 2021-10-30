@@ -18,7 +18,7 @@ class Inventory {
         //class methods
 
         //object methods
-        void put(Sword* sword);
+        void addItem(Sword* sword);
         void drop(int index);
         int countItems() const;
         void listID() const;

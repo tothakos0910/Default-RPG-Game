@@ -10,53 +10,42 @@
 
 int main(int argc, char** argv){
 
-  std::cout << "\n";
-
-  try {
-  Warrior warrior1 = Warrior::parseFromFile("Alliance", argv[1]);
-  Warrior warrior2 = Warrior::parseFromFile("Horde", argv[2]);
-
-  //fightTillDeath(warrior1, warrior2);
-
-  std::cout << "Warriors alive: " << Warrior::getAlive() << std::endl;
-  } catch(FileNotFoundException exception) {
-    std::cout << "File: " << exception.filename << " not found." << std::endl;
-    return 1;
-  } catch(Warrior::BadFileFormatException exception) {
-    std::cout << "Bad file structure in '" << exception.filename << "'" << std::endl;
-    return 2;
-  }
-
   Inventory inv;
+  Sword s(1,1,1,1);
+  inv.put(s);
+  std::cout << &s << std::endl;
+  s.use();
+  inv.getItem(0).use();
+
+  /*
   inv.put(Sword(10, 3, 1.2, 0));
   inv.put(Sword(11, 5, 3.4, 1));
   inv.put(Sword(12, 2, 0.3, 2));
   inv.put(Sword(13, 2, 1.3, 3));
-  inv.put(Sword(9, 5, 0.5, 4));
-  inv.put(Sword(7, 3, 1.2, 5));
-  inv.put(Sword(15, 8, 1.8, 6));
-  inv.put(Sword(8, 1, 1.3, 7));
 
-  std::cout << "A táskában " << inv.countItems() << "db kard van." << std::endl;
-  std::cout << "Total suly: " << inv.getTotalWeight() << std::endl;
+  Inventory inv2 = inv;    //assignment konstruktor
+  Inventory inv3(inv);    //copy konstruktor
 
-  inv.getItem(2).use();
-  inv.getItem(2).use();
+  inv.getItem(1).use();
+  inv.getItem(0).use();
+  inv.getItem(0).use();
+  inv.getItem(0).use();
+  inv.getItem(0).use();
 
-
-  for (int i = 0; i < inv.countItems(); i++){
-    Sword s = inv.getItem(i);
-    s.statusToString();
-    std::cout << std::endl;
+  std::cout << "-----INV1"<<std::endl;
+  for(int i = 0; i < inv.countItems(); i++) {
+    inv.getItem(i).statusToString();
   }
-  
-  inv.drop(0);
-
-  for (int i = 0; i < inv.countItems(); i++){
-    Sword s = inv.getItem(i);
-    s.statusToString();
-    std::cout << std::endl;
+  std::cout << "-----INV2"<<std::endl;
+  for(int i = 0; i < inv2.countItems(); i++) {
+    inv2.getItem(i).statusToString();
   }
+  std::cout << "-----INV3"<<std::endl;
+  for(int i = 0; i < inv3.countItems(); i++) {
+    inv3.getItem(i).statusToString();
+  }
+ */
+
 
   return 0;
 }

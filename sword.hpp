@@ -6,6 +6,8 @@ class Sword{
     public:
         //konstruktorok
         Sword(int damage, const int durability, const double weight, const int id);
+        //destruktor
+        ~Sword();
         
         //getterek
         double getWeight() const;

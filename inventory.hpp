@@ -8,10 +8,12 @@ class Inventory {
     public:
         //konstruktorok
         Inventory();
+        //destruktor
+        ~Inventory();
 
         //getterek
         double getTotalWeight() const;
-        Sword getItem(int index) const;
+        std::vector<Sword>& getItem(int index) const;
 
         //class methods
 
@@ -20,9 +22,12 @@ class Inventory {
         void drop(int index);
         int countItems() const;
         void listID() const;
+        void clear();
 
         //exeptions structurs
-        struct WrongIndexException {};
+        struct WrongIndexException {
+            int index;
+        };
 
     private:
         std::vector<Sword> swords;

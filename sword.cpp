@@ -25,5 +25,5 @@ void Sword::repair(){
 
 void Sword::statusToString() const {
     std::cout << "ID:" << id << " damage:" << damage << " Weight: " << weight << " Max durability:" << max_durability 
-    << " Current durability: " << current_durability;
+    << " Current durability: " << current_durability << std::endl;
 }

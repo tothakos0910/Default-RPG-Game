@@ -11,25 +11,14 @@
 int main(int argc, char** argv){
 
   Inventory inv;
-  Sword s(1,1,1,1);
-  inv.put(new Sword(1,1,1,1));
-  std::cout << &s << std::endl;
-  s.use();
-  inv.getItem(0).use();
-
-  /*
-  inv.put(Sword(10, 3, 1.2, 0));
-  inv.put(Sword(11, 5, 3.4, 1));
-  inv.put(Sword(12, 2, 0.3, 2));
-  inv.put(Sword(13, 2, 1.3, 3));
+  inv.put(new Sword(10, 3, 1.2, 0));
+  inv.put(new Sword(11, 5, 3.4, 1));
+  inv.put(new Sword(12, 2, 0.3, 2));
+  inv.put(new Sword(13, 2, 1.3, 3));
 
   Inventory inv2 = inv;    //assignment konstruktor
   Inventory inv3(inv);    //copy konstruktor
 
-  inv.getItem(1).use();
-  inv.getItem(0).use();
-  inv.getItem(0).use();
-  inv.getItem(0).use();
   inv.getItem(0).use();
 
   std::cout << "-----INV1"<<std::endl;
@@ -44,8 +33,6 @@ int main(int argc, char** argv){
   for(int i = 0; i < inv3.countItems(); i++) {
     inv3.getItem(i).statusToString();
   }
- */
-
 
   return 0;
 }

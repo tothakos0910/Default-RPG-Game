@@ -23,8 +23,8 @@ double Inventory::getTotalWeight() const {
 
 Sword Inventory::getItem(int index) const {
     if (index < 0 || index >= countItems()) throw WrongIndexException{index};
-    std::cout << &swords[index] << std::endl;
-    return *swords[index];
+    //std::cout << &swords[index] << std::endl;
+    return *(swords[index]);
 }
 
 //class methods

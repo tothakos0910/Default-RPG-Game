@@ -6,30 +6,11 @@
 #include "exeptions.hpp"
 #include "inventory.hpp"
 
-//19. video
+//23. video
 
 int main(int argc, char** argv){
-
-  Inventory* inv = new Inventory();;
-  Sword s(10,2,1,0);
-  inv->addItem(&s);
-  inv->addItem(new Sword(20,2,1,2));
-
-  std::cout << "\n";
-  s.statusToString();
-  s.use();
-  s.statusToString();
-
-  std::cout << "\n";
-  inv->getItem(0).statusToString();
-  inv->getItem(0).use();
-  inv->getItem(0).statusToString();
-
-  std::cout << "\n";
-  inv->getItem(1).statusToString();
-  inv->getItem(1).use();
-  inv->getItem(1).statusToString();
-
-
+    Sword s(1,2,3);
+    while (s.isUsable())
+    std::cout << s.useSword() << std::endl;
   return 0;
 }

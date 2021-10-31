@@ -7,30 +7,23 @@
 class Inventory {
     public:
         //konstruktorok
-        Inventory();
-        //destruktor
-        ~Inventory();
+        Inventory(double weightLimit);
 
         //getterek
         double getTotalWeight() const;
-        Sword getItem(int index) const;
+        const Sword& getItem(int index) const;
 
         //class methods
 
         //object methods
-        void addItem(Sword* sword);
-        void drop(int index);
+        bool addItem(const Sword& sword);
+        Sword drop(int index);
         int countItems() const;
-        void listID() const;
         void clear();
 
-        //exeptions structurs
-        struct WrongIndexException {
-            int index;
-        };
-
     private:
-        std::vector<Sword*> swords;
+        double weightLimit;
+        std::vector<Sword> swords;
 };
 
 #endif

@@ -1,23 +1,18 @@
 #ifndef SWORD_HPP 
 #define SWORD_HPP
 
-#include "_item.hpp"
+#include "Wearable.hpp"
 
-class Sword : public Item {
+class Sword : public Wearable {
     public:
-        //konstruktorok
         Sword(int damage, int durability, double weight);
-        
-        //getterek
         double getWeight() const;
-
-        //object methods
         int useSword();
         void statusToString() const;
 
     private:
-        const int damage;
-        const double weight;
+        int damage;
+        double weight;
 };
 
 

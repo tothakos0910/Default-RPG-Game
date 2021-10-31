@@ -4,7 +4,7 @@
 
 //konstruktorok
 Sword::Sword(int damage, int durability, double weight)
-:Item(durability), damage(damage), weight(weight) {};
+:Wearable(durability), damage(damage), weight(weight) {};
 //getterek
 double Sword::getWeight() const {return weight;}
 

@@ -1,9 +1,10 @@
 #ifndef DURABILITY_HPP
 #define DURABILITY_HPP
 
-class Item {
+
+class Wearable {
     public:
-        Item(int max_durability);
+        Wearable(int max_durability);
         void repair();
         bool isUsable()const;
         void amortize();

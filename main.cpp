@@ -1,10 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "warrior.hpp"
-#include "battle.hpp"
-#include "exeptions.hpp"
-#include "inventory.hpp"
+#include "sword.hpp"
 
 //23. video
 

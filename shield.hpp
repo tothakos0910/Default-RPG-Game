@@ -2,9 +2,9 @@
 #define SHIELD_HPP
 
 #include <string>
-#include "_item.hpp"
+#include "Wearable.hpp"
 
-class Shield : public Item {
+class Shield : public Wearable {
     public:
         Shield(int defense, int durability, double weight);
         int useShield();

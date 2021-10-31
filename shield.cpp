@@ -1,20 +1,17 @@
 #include "shield.hpp"
 
-#include <iostream>
 
-//konstruktorok
 Shield::Shield(int defense, int durability, double weight)
-:Item(durability), defense(defense), weight(weight) {}
-//getterek
-double Shield::getWeight() const {return weight;}
+:Wearable(durability), defense(defense), weight(weight) {}
 
-//object methods
 int Shield::useShield() {
     if (isUsable() > 0){
         amortize();
         return defense;
     } else return 0;
 }
+
+double Shield::getWeight() const {return weight;}
 
 std::string Shield::statusToString() const {
     return "SHIELD defense:" + std::to_string(defense) 

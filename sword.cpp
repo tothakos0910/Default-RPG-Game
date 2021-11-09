@@ -4,9 +4,8 @@
 
 //konstruktorok
 Sword::Sword(int damage, int durability, double weight)
-:Wearable(durability), damage(damage), weight(weight) {};
+:Wearable(durability, weight), damage(damage) {};
 //getterek
-double Sword::getWeight() const {return weight;}
 
 //object methods
 int Sword::useSword() {
@@ -18,7 +17,7 @@ int Sword::useSword() {
 
 void Sword::statusToString() const {
     std::cout << " damage:" << damage 
-    << " Weight: " << weight 
+    << " Weight: " << getWeight() 
     << " Max durability:" << max_durability
     << " Current durability: " <<  current_durability << std::endl;
 }

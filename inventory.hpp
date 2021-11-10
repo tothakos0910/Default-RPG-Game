@@ -8,22 +8,25 @@ class Inventory {
     public:
         //konstruktorok
         Inventory(double weightLimit);
+        ~Inventory();
+
+        Inventory(const Inventory&) = delete;
+        Inventory& operator=(const Inventory&) = delete;
 
         //getterek
         double getTotalWeight() const;
-        const Sword& getItem(int index) const;
-
-        //class methods
+        const Item& getItem(int index) const;
 
         //object methods
-        bool addItem(const Sword& sword);
-        Sword drop(int index);
+        bool addItem(Item* item);
+        Item* drop(int index);
+        void destroy(int index);
         int countItems() const;
         void clear();
 
     private:
-        double weightLimit;
-        std::vector<Sword> swords;
+        std::vector<Item*> items;
+        const double weightLimit;
 };
 
 #endif

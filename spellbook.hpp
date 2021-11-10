@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-class SpellBook: public Item{
+class SpellBook : public Item {
     public:
         using Spell = std::string;
 
@@ -15,6 +15,14 @@ class SpellBook: public Item{
         std::vector<Spell> getSpells() const {return spells;}
 
         void writeSpell(Spell spell) {spells.push_back(spell);}
+
+        std::string toString() const {
+            std::string toReturn = "Spellbook: ";
+            for (auto spell : spells) {
+                toReturn += " "+spell;
+            }
+            return toReturn;
+        }
 
     private:
         std::vector<Spell> spells;

@@ -1,19 +1,24 @@
 #include <iostream>
 #include <string>
 
+#include "inventory.hpp"
 #include "sword.hpp"
+#include "shield.hpp"
 #include "spellbook.hpp"
 
-//26. video
+//27. video
 
 int main(int argc, char** argv){
-    SpellBook book;
-    SpellBook::Spell spell("fireball");
-    book.writeSpell(spell);
+  Inventory inv(12);
+  inv.addItem(new Sword(12,3,3.5));
+  inv.addItem(new SpellBook());
+  inv.addItem(new Shield(12,12,5.5));
 
-    Sword s(1,2,3);
-    while (s.isUsable())
-    std::cout << s.useSword() << std::endl;
-    std::cout << s.getWeight() <<std::endl; 
+  for (int i = 0; i < inv.countItems(); i++)
+  {
+    std::cout << inv.getItem(i).toString()<< std::endl;
+  }
+  
+
   return 0;
 }

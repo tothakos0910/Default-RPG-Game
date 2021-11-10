@@ -15,9 +15,9 @@ int Sword::useSword() {
     } else return 0;
 }
 
-void Sword::statusToString() const {
-    std::cout << " damage:" << damage 
-    << " Weight: " << getWeight() 
-    << " Max durability:" << max_durability
-    << " Current durability: " <<  current_durability << std::endl;
+std::string Sword::toString() const {
+    return "SWORD [Damage: " + std::to_string(damage) 
+    + ", Weight: " + std::to_string(getWeight()) 
+    + ", Max durability: " + std::to_string(max_durability)
+    + ", Current durability: " + std::to_string(current_durability);
 }

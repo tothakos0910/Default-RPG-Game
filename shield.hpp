@@ -8,7 +8,7 @@ class Shield : public Wearable {
     public:
         Shield(int defense, int durability, double weight);
         int useShield();
-        std::string statusToString() const;
+        std::string toString() const override;
     private:
         const int defense;
 };

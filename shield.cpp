@@ -11,7 +11,7 @@ int Shield::useShield() {
     } else return 0;
 }
 
-std::string Shield::statusToString() const {
+std::string Shield::toString() const {
     return "SHIELD defense:" + std::to_string(defense) 
     + " Weight: " + std::to_string(getWeight()) 
     + " Max durability:" + std::to_string(max_durability)

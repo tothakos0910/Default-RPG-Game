@@ -1,7 +1,7 @@
 #ifndef INVETORY_HPP
 #define INVETORY_HPP
 
-#include "sword.hpp"
+#include "item.hpp"
 #include <vector>
 
 class Inventory {
@@ -15,6 +15,20 @@ class Inventory {
 
         //getterek
         double getTotalWeight() const;
+
+        template <typename T>
+        double getWeight() const {
+            double totalWeight = 0;
+            for (auto item: items){
+                T* pT=dynamic_cast<T*>(item);
+                if (pT!=nullptr){
+                    totalWeight+=pT->getWeight();
+                }
+            }
+                return totalWeight;
+            
+        }
+
         const Item& getItem(int index) const;
 
         //object methods

@@ -12,8 +12,8 @@ int Shield::useShield() {
 }
 
 std::string Shield::toString() const {
-    return "SHIELD defense:" + std::to_string(defense) 
-    + " Weight: " + std::to_string(getWeight()) 
-    + " Max durability:" + std::to_string(max_durability)
-    + " Current durability: " + std::to_string(current_durability);
+    return "SHIELD [Defense: " + std::to_string(defense) 
+    + ", Weight: " + std::to_string(getWeight()) 
+    + ", Max durability: " + std::to_string(max_durability)
+    + ", Current durability: " + std::to_string(current_durability);
 }
